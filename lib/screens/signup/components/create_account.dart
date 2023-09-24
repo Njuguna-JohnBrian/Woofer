@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:woofer/button.dart';
 
+import '../../profile/profile.dart';
 import 'input_field.dart';
 
 class CreateAccountScreen extends StatefulWidget {
@@ -126,7 +127,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       ),
                     ),
                     const Text(
-                      "By creating an account, you agree to our \n terms and condition",
+                      "By creating an account, you agree to our \n terms and conditions",
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -138,7 +139,16 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   height: size.height * 0.04,
                 ),
                 ReusableButton(
-                  voidCallbackFunction: () => {},
+                  voidCallbackFunction: () => {
+                    if (_createAccountFormKey.currentState!.validate())
+                      {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(),
+                          ),
+                        )
+                      }
+                  },
                   buttonText: "SIGN UP",
                   buttonStyle: TextButton.styleFrom(
                     backgroundColor: const Color(
