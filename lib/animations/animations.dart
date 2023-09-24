@@ -1,5 +1,6 @@
 enum LottieAnimation {
-  woofer(name: 'woofer');
+  woofer(name: 'woofer'),
+  soon(name: 'soon');
 
   final String name;
   const LottieAnimation({
