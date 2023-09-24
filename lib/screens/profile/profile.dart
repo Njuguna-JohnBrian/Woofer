@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: size.height * 0.01,
+                  height: size.height * 0.04,
                 ),
                 ReusableButton(
                   voidCallbackFunction: () => {
@@ -195,31 +195,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: size.height * 0.01,
+                  height: size.height * 0.06,
                 ),
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildRadioButtons() {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          RadioListTile(
-            value: ProfileTitles.mr,
-            groupValue: _profileTitles,
-            onChanged: (value) {
-              setState(() {
-                _profileTitles = value.toString() as ProfileTitles?;
-              });
-            },
-          )
-        ],
       ),
     );
   }
