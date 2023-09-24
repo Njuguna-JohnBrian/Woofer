@@ -7,6 +7,7 @@ class InputFieldComponent extends StatefulWidget {
   final IconData iconData;
   final String labelText;
   final String hintText;
+  final bool showIcon;
 
   const InputFieldComponent({
     super.key,
@@ -15,6 +16,7 @@ class InputFieldComponent extends StatefulWidget {
     required this.iconData,
     required this.labelText,
     required this.hintText,
+    this.showIcon = true,
   });
 
   @override
@@ -33,6 +35,12 @@ class _InputFieldComponentState extends State<InputFieldComponent> {
       child: TextFormField(
         controller: widget.textEditingController,
         autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: ((value) {
+          if (value!.isEmpty) {
+            return '${widget.labelText} is required';
+          }
+          return null;
+        }),
         cursorColor: Colors.grey,
         style: TextStyle(
           color: Colors.black.withOpacity(
@@ -43,10 +51,12 @@ class _InputFieldComponentState extends State<InputFieldComponent> {
         decoration: InputDecoration(
           fillColor: Colors.transparent,
           filled: true,
-          prefixIcon: Icon(
-            widget.iconData,
-            color: Colors.black,
-          ),
+          prefixIcon: widget.showIcon
+              ? Icon(
+                  widget.iconData,
+                  color: Colors.black,
+                )
+              : null,
           enabledBorder: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(
               10.0,
