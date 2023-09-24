@@ -64,6 +64,7 @@ class WFTheme {
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
+      useMaterial3: true,
       fontFamily: "OpenSans",
       scaffoldBackgroundColor: Color(0xFFFFAE41),
       checkboxTheme: CheckboxThemeData(
@@ -98,6 +99,7 @@ class WFTheme {
   static ThemeData dark() {
     return ThemeData(
       brightness: Brightness.dark,
+      useMaterial3: true,
       scaffoldBackgroundColor: Colors.black,
       fontFamily: "OpenSans",
       appBarTheme: AppBarTheme(
