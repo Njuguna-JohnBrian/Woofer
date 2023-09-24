@@ -30,6 +30,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => const SignUpScreen(),
+                ),
+                (route) => false,
+              );
+            },
+            style: TextButton.styleFrom(
+              shape: const StadiumBorder(),
+              minimumSize: const Size(
+                80,
+                10,
+              ),
+              backgroundColor: WFTheme.mainColor,
+              foregroundColor: Colors.white,
+            ),
+            child: const Text(
+              "Skip",
+            ),
+          )
+        ],
+      ),
       body: PageView.builder(
         controller: controller,
         itemCount: backgroundImages.length,
@@ -120,45 +150,57 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
-              onPressed: () {
-                controller.previousPage(
-                  duration: const Duration(
-                    seconds: 1,
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: WFTheme.mainColor,
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    controller.previousPage(
+                      duration: const Duration(
+                        seconds: 1,
+                      ),
+                      curve: Curves.ease,
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.chevron_left,
+                    size: 50,
+                    color: WFTheme.faintMainColor,
                   ),
-                  curve: Curves.ease,
-                );
-              },
-              icon: const Icon(
-                Icons.chevron_left,
-                size: 50,
-                color: WFTheme.faintMainColor,
+                ),
               ),
             ),
-            IconButton(
-              onPressed: () {
-                if (controller.page == 2.0) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpScreen(),
-                    ),
-                    (route) => false,
-                  );
-                } else {
-                  controller.nextPage(
-                    duration: const Duration(
-                      seconds: 1,
-                    ),
-                    curve: Curves.ease,
-                  );
-                }
-              },
-              icon: const Icon(
-                Icons.chevron_right,
-                size: 50,
-                color: WFTheme.faintMainColor,
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: WFTheme.mainColor,
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    if (controller.page == 2.0) {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    } else {
+                      controller.nextPage(
+                        duration: const Duration(
+                          seconds: 1,
+                        ),
+                        curve: Curves.ease,
+                      );
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.chevron_right,
+                    size: 50,
+                    color: WFTheme.faintMainColor,
+                  ),
+                ),
               ),
             ),
           ],
