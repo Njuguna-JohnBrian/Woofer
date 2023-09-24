@@ -2,10 +2,10 @@ import 'package:woofer/animations/animations_utils/view.dart';
 
 import '../animations.dart';
 
-class WooferAnimation extends LottieAnimationView {
-  const WooferAnimation({
+class ComingSoonAnimation extends LottieAnimationView {
+  const ComingSoonAnimation({
     super.key,
   }) : super(
-          animation: LottieAnimation.woofer,
+          animation: LottieAnimation.soon,
         );
 }
